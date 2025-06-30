@@ -5,8 +5,7 @@ using System.Windows.Forms;
 
 namespace librarysystem2
 {
-    //upon pressing the books button the users can navigate the books available to loan or buy
-
+    // Upon pressing the books button, users can navigate the books available to loan or buy.
     public partial class Books : Form
     {
         SqlConnection Con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\hp\\Documents\\LIBRARY MANAGEMENT SYSTEM.mdf\";Integrated Security=True;Connect Timeout=30");
@@ -14,11 +13,12 @@ namespace librarysystem2
         public Books()
         {
             InitializeComponent();
-            this.button1.Click += new System.EventHandler(this.button1_Click); // Add
-            this.button2.Click += new System.EventHandler(this.button2_Click); // Update
-            this.button3.Click += new System.EventHandler(this.button3_Click); // Reset
-            this.button4.Click += new System.EventHandler(this.button4_Click); // Delete
-            this.button5.Click += new System.EventHandler(this.button5_Click); // Home
+            this.Load += Books_Load;
+            button1.Click += button1_Click; // Add
+            button2.Click += button2_Click; // Update
+            button3.Click += button3_Click; // Reset
+            button4.Click += button4_Click; // Delete
+            button5.Click += button5_Click; // Home
         }
 
         private void Books_Load(object sender, EventArgs e)
@@ -49,7 +49,6 @@ namespace librarysystem2
                     Con.Close();
             }
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -162,22 +161,11 @@ namespace librarysystem2
             this.Hide();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void label7_Click(object sender, EventArgs e)
         {
-
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Hide();
         }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
-            this.Close();
-        }
-
-        private void BookIDtextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
